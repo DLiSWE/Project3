@@ -6,6 +6,11 @@ const generateNumber = () => {
     return Math.trunc(Math.random()*100+1);
 }
 
+// reset button
+const reset = () => {
+    score = 10
+}
+
 
 // get random choice
 const randomchoice = generateNumber();
