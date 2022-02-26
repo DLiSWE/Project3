@@ -1,0 +1,16 @@
+html{
+    font-size:12px;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    background:aquamarine;
+    margin-top:2%;
+}
+
+.bground .content{
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
