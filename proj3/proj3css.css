@@ -34,3 +34,13 @@ body{
     margin-right:1%;
     margin-bottom:1%;
 }
+
+.scoreboard {
+    background:beige;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:20%;
+    margin-bottom:48%;
+    margin-left:1%;
+}

@@ -1,18 +1,35 @@
-const score = 10
-const generateNumber = () => {
-    return Math.trunc(Math.random()*100+1)
-}
-const randomchoice = generateNumber()
+let score = 10;
+document.getElementById('current').innerHTML = score
 
-document.getElementById("submit").addEventListener('click', function(){
-    const uGuess = document.getElementById('guess').value
-    if (uGuess == randomchoice){
-        console.log('It is equal')
+// random number function
+const generateNumber = () => {
+    return Math.trunc(Math.random()*100+1);
+}
+
+// get random choice
+const randomchoice = generateNumber();
+
+// logic to check whether user input is number
+document.getElementById("submit1").addEventListener('click', function(){
+    const uGuess = document.getElementById('guess').value;
+    if (Number(uGuess) == randomchoice){
+        document.getElementById('phrase').innerHTML = `${uGuess} is right!`;
+        document.getElementById('high').innerHTML = `${score} `;
     }
-    else if (uGuess < randomchoice){
-        console.log('Your guess is too low try again')
+    else if (Number(uGuess) < randomchoice){
+        document.getElementById('phrase').innerHTML = `Your guess is too low`;
+        score--;
+        document.getElementById('current').innerHTML = score
     }
-    else {
-        console.log('Your guess is too high')
+    else if (Number(uGuess) > randomchoice){
+        document.getElementById('phrase').innerHTML = `Your guess is too high`;
+        score--;
+        document.getElementById('current').innerHTML = score
+    }
+    else{
+        document.getElementById('phrase').innerHTML = 'Your guess is not within 1-100. Please try again';
     }
 })
+
+// Check if score is 0
+
