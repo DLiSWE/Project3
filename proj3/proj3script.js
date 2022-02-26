@@ -16,12 +16,3 @@ document.getElementById("submit").addEventListener('click', function(){
         console.log('Your guess is too high')
     }
 })
-
-// const checker = () => {
-//     const userguess = document.getElementById('guess');
-//     console.log(userguess.value);
-// }
-
-
-
-// document.getElementById("submit").addEventListener("click",checker)
