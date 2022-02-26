@@ -9,12 +9,23 @@
 </head>
 <body>
     <div class="content" id="content">
-        <h1>Guess the number!</h1>
+        <h1>Guess my number</h1>
         <h3> Guess the number between 1 and 100</h3>
+        <div class="scoreBox">
+            <h3>Score: </h3>
+            <h3>High Score</h3>
+        </div>
+        <div class="resetBox">
+            <button class="reset">Reset</button>
+        </div>
         <div class="main" id="main">
+
             <p>Enter your guess here</p>
-            <input type="text" id="guess" name="guess" placeholder="Enter Number">
+            <input type="text" id="guess" name="guess" placeholder="Guess a number">
             <input type="submit" id="submit" value="Guess">
+        </div>
+        <button>Check</button>
+    <div class="guessHistory">Guess History</div>
         </div>
     </div>
 <script src="proj3script.js"></script>
