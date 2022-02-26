@@ -21,7 +21,7 @@ body{
     justify-content:center;
     flex-direction:column;
     border:2px turquoise solid;
-    background:pink;
+    background:rgb(102, 59, 219);
     height:500px;
     width:600px;
 }
