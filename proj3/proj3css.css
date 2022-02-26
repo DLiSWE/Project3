@@ -1,5 +1,5 @@
 html{
-    font-size:12px;
+    font-size:14px;
 }
 
 body{
@@ -9,8 +9,18 @@ body{
     margin-top:2%;
 }
 
-.bground .content{
+.content{
     display:flex;
     justify-content:center;
     flex-direction:column;
+    text-align:center;
+}
+
+.content .main{
+    display:flex;
+    justify-content:center;
+    border:2px turquoise solid;
+    background:pink;
+    height:500px;
+    width:600px;
 }
