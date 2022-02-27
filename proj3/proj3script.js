@@ -8,9 +8,6 @@ const generateNumber = () => {
     return Math.trunc(Math.random()*100+1);
 }
 
-function changeStyling ()
-{}
-
 // get random choice
 let randomchoice = generateNumber();
 console.log(randomchoice)
