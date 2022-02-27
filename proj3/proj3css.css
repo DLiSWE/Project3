@@ -142,3 +142,9 @@ body{
     padding-left:3%;
     padding-right:3%;
 }
+
+#secret1{
+    font-size:1.2rem;
+    font-weight: bold;
+
+}

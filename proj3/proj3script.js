@@ -1,4 +1,6 @@
 let score = 10;
+const guesslist = []
+
 document.getElementById('current').innerHTML = score
 
 // random number function
@@ -39,13 +41,13 @@ document.getElementById("submit1").addEventListener('click', function(){
         }
     }
     // if guess is < randomchoice OR (guess is > randomchoice AND guess <= 100)
-    else if (Number(uGuess) < randomchoice || (Number(uGuess) > randomchoice && Number(uGuess) <= 100)){
+    else if (Number(uGuess) < randomchoice || (Number(uGuess) > randomchoice && (Number(uGuess) <= 100 && Number(uGuess) >= 0))){
         document.getElementById('phrase').innerHTML = `Your guess is too low`;
         score--;
         document.getElementById('current').innerHTML = score
         if (Number(document.getElementById('current').innerText) == 0){
             document.body.style.backgroundColor = 'red';
-            document.getElementById('secret').innerHTML = `${uGuess}`;
+            document.getElementById('secret1').innerText = `${randomchoice}`;
             document.getElementById('guess').style.display = 'none';
             document.getElementById('submit1').style.display = 'none';
             document.getElementById('reset1').style.display = 'none';
@@ -59,18 +61,16 @@ document.getElementById("submit1").addEventListener('click', function(){
             document.getElementById('main').style.backgroundColor = 'pink';
         }
     }
-
     else{
         document.getElementById('phrase').innerHTML = 'Your guess is not within 1-100. Please try again';
     }
     // append to guess list after every submit
     const node = document.createElement("li");
     const guess = document.createTextNode(uGuess);
-    let guesslist = []
 
-    if (guess in guesslist === false){
+    if (!(guesslist.includes(uGuess))){
         node.appendChild(guess);
-        guesslist.push(guess);
+        guesslist.push(uGuess);
         console.log(guesslist)
         document.getElementById("guesslist").appendChild(node);
     }
@@ -84,7 +84,7 @@ document.getElementById("submit1").addEventListener('click', function(){
 function reset(){
     score = 10
     randomchoice = generateNumber();
-    guesslist = []
+    guesslist.length = 0
     document.getElementById("guesslist").innerHTML = 'Guesses: '
     console.log(randomchoice)
     document.getElementById('current').innerHTML = score;
