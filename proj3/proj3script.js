@@ -1,7 +1,6 @@
 let score = 10;
 document.getElementById('current').innerHTML = score
 
-
 // random number function
 const generateNumber = () => {
     return Math.trunc(Math.random()*100+1);
@@ -39,6 +38,7 @@ document.getElementById("submit1").addEventListener('click', function(){
             document.getElementById('high').innerHTML = `${score}`;
         }
     }
+    // if guess is < randomchoice OR (guess is > randomchoice AND guess <= 100)
     else if (Number(uGuess) < randomchoice || (Number(uGuess) > randomchoice && Number(uGuess) <= 100)){
         document.getElementById('phrase').innerHTML = `Your guess is too low`;
         score--;
@@ -57,14 +57,13 @@ document.getElementById("submit1").addEventListener('click', function(){
             document.getElementById('toprow1').style.marginTop = '-80px'
             document.getElementById('toprow1').style.justifyContent = 'left'
             document.getElementById('main').style.backgroundColor = 'pink';
-            
         }
     }
 
     else{
         document.getElementById('phrase').innerHTML = 'Your guess is not within 1-100. Please try again';
     }
-    // append to list after every submit
+    // append to guess list after every submit
     const node = document.createElement("li");
     const guess = document.createTextNode(uGuess);
     let guesslist = []
@@ -81,42 +80,30 @@ document.getElementById("submit1").addEventListener('click', function(){
     }
 }
 )
-
-//reset to initial 
-document.getElementById("reset1").addEventListener('click', function(){
+// reset function
+function reset(){
     score = 10
     document.getElementById('current').innerHTML = score;
-    let randomchoice = Number(generateNumber());
-    document.body.style.backgroundColor = 'aquamarine';
-    document.getElementById('main').style.backgroundColor = 'peachpuff';
-    document.getElementById('win').style.display = 'none';
-    document.getElementById('lose').style.display = 'none';
-    document.getElementById('phrase').style.display = 'flex';
-    document.getElementById('phrase').style.textAlign = 'center';
-    document.getElementById('main').style.backgroundColor = "dodgerblue";
-    document.getElementById('reset1').style.backgroundColor = 'lightcoral';
-    document.getElementById('reset1').style.color = 'darkmagenta';
-    document.getElementById('reset1').innerHTML = 'Reset';
-    document.getElementById('guess').style.display = 'flex';
-    document.getElementById('submit1').style.display = 'flex';
-    document.getElementById('picture').src='initial.png';
-})
-
-document.getElementById("reset2").addEventListener('click', function(){
-    score = 10
-    document.getElementById('current').innerHTML = score;
-    let randomchoice = Number(generateNumber());
     document.body.style.backgroundColor = 'aquamarine';
     document.getElementById('main').style.backgroundColor = 'peachpuff';
     document.getElementById('win').style.display = 'none';
     document.getElementById('lose').style.display = 'none';
     document.getElementById('phrase').style.display = 'flex';
     document.getElementById('main').style.backgroundColor = "dodgerblue";
+    document.getElementById('reset1').style.display = 'flex';
+    document.getElementById('toprow1').style.marginTop = '-15px';
+    document.getElementById('toprow1').style.justifyContent = 'space-between';
     document.getElementById('reset1').style.backgroundColor = 'lightcoral';
     document.getElementById('reset1').style.color = 'darkmagenta';
     document.getElementById('reset1').innerHTML = 'Reset';
     document.getElementById('guess').style.display = 'flex';
     document.getElementById('submit1').style.display = 'flex';
     document.getElementById('picture').src='initial.png';
-})
+    document.getElementById('picture').style.marginLeft = 'unset';
+}
 
+// top right corner reset
+document.getElementById("reset1").addEventListener('click', reset)
+// reset button after win/loss on bottom
+document.getElementById("reset2").addEventListener('click', reset)
+document.getElementById("reset3").addEventListener('click', reset)
