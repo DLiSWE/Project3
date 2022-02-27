@@ -83,6 +83,10 @@ document.getElementById("submit1").addEventListener('click', function(){
 // reset function
 function reset(){
     score = 10
+    randomchoice = generateNumber();
+    guesslist = []
+    document.getElementById("guesslist").innerHTML = 'Guesses: '
+    console.log(randomchoice)
     document.getElementById('current').innerHTML = score;
     document.body.style.backgroundColor = 'aquamarine';
     document.getElementById('main').style.backgroundColor = 'peachpuff';
