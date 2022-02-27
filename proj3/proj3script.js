@@ -1,7 +1,5 @@
-let score = 10;
-const guesslist = []
-
-document.getElementById('current').innerText = score
+let score = 1;
+const guesslist = [];
 
 // random number function
 const generateNumber = () => {
@@ -10,12 +8,32 @@ const generateNumber = () => {
 
 // get random choice
 let randomchoice = generateNumber();
-console.log(randomchoice)
+console.log(randomchoice);
 
-// logic to check whether user input is number
-document.getElementById("submit1").addEventListener('click', function(){
-    const uGuess = document.getElementById('guess').value;
-    if (Number(uGuess) == randomchoice){
+document.getElementById('current').innerText = score
+
+function changeStyling (status, uGuess){
+    if (status === false){
+        score--;
+        console.log(score)
+        document.getElementById('current').innerText = score
+        if (Number(document.getElementById('current').innerText) == 0){
+            document.body.style.backgroundColor = 'red';
+            document.getElementById('secret1').innerText = `${randomchoice}`;
+            document.getElementById('guess').style.display = 'none';
+            document.getElementById('submit1').style.display = 'none';
+            document.getElementById('reset1').style.display = 'none';
+            document.getElementById('reset2').style.display = 'flex';
+            document.getElementById('picture').src='lose.png';
+            document.getElementById('picture').style.marginLeft = '20%';
+            document.getElementById('lose').style.display = 'flex';
+            document.getElementById('phrase').style.display = 'none';
+            document.getElementById('toprow1').style.marginTop = '-80px'
+            document.getElementById('toprow1').style.justifyContent = 'left'
+            document.getElementById('main').style.backgroundColor = 'pink';
+        }
+    }
+    else {
         document.body.style.backgroundColor = 'green';
         document.getElementById('secret').innerText = `${uGuess}`;
         document.getElementById('guess').style.display = 'none';
@@ -30,6 +48,14 @@ document.getElementById("submit1").addEventListener('click', function(){
         document.getElementById('toprow1').style.marginTop = '-30px'
         document.getElementById('toprow1').style.justifyContent = 'left'
         document.getElementById('crs').innerText = document.getElementById('current').innerText;
+    }
+}
+
+// logic to check whether user input is number
+document.getElementById("submit1").addEventListener('click', function(){
+    const uGuess = document.getElementById('guess').value;
+    if (Number(uGuess) == randomchoice){
+        changeStyling(true, uGuess)
         if (document.getElementById('high').innerText == 0) {
         document.getElementById('hi').innerText = document.getElementById('current').innerText
         }
@@ -43,45 +69,11 @@ document.getElementById("submit1").addEventListener('click', function(){
     // if guess is < randomchoice OR (guess is > randomchoice AND guess <= 100)
     else if (Number(uGuess) < randomchoice && Number(uGuess) >= 0){
         document.getElementById('phrase').innerText = `Your guess is too low`;
-        score--;
-        console.log(score)
-        document.getElementById('current').innerText = score
-        if (Number(document.getElementById('current').innerText) == 0){
-            document.body.style.backgroundColor = 'red';
-            document.getElementById('secret1').innerText = `${randomchoice}`;
-            document.getElementById('guess').style.display = 'none';
-            document.getElementById('submit1').style.display = 'none';
-            document.getElementById('reset1').style.display = 'none';
-            document.getElementById('reset2').style.display = 'flex';
-            document.getElementById('picture').src='lose.png';
-            document.getElementById('picture').style.marginLeft = '20%';
-            document.getElementById('lose').style.display = 'flex';
-            document.getElementById('phrase').style.display = 'none';
-            document.getElementById('toprow1').style.marginTop = '-80px'
-            document.getElementById('toprow1').style.justifyContent = 'left'
-            document.getElementById('main').style.backgroundColor = 'pink';
-        }
+        changeStyling(false)
     }
     else if (Number(uGuess) > randomchoice && Number(uGuess) <= 100){
         document.getElementById('phrase').innerText = `Your guess is too high`;
-        score--;
-        console.log(score)
-        document.getElementById('current').innerText = score
-        if (Number(document.getElementById('current').innerText) == 0){
-            document.body.style.backgroundColor = 'red';
-            document.getElementById('secret1').innerText = `${randomchoice}`;
-            document.getElementById('guess').style.display = 'none';
-            document.getElementById('submit1').style.display = 'none';
-            document.getElementById('reset1').style.display = 'none';
-            document.getElementById('reset2').style.display = 'flex';
-            document.getElementById('picture').src='lose.png';
-            document.getElementById('picture').style.marginLeft = '20%';
-            document.getElementById('lose').style.display = 'flex';
-            document.getElementById('phrase').style.display = 'none';
-            document.getElementById('toprow1').style.marginTop = '-80px'
-            document.getElementById('toprow1').style.justifyContent = 'left'
-            document.getElementById('main').style.backgroundColor = 'pink';
-        }
+        changeStyling(false)
     }
     else {
         document.getElementById('phrase').innerText = 'Your guess is not within 1-100. Please try again';
