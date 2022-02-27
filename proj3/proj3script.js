@@ -1,12 +1,15 @@
 let score = 10;
 const guesslist = []
 
-document.getElementById('current').innerHTML = score
+document.getElementById('current').innerText = score
 
 // random number function
 const generateNumber = () => {
     return Math.trunc(Math.random()*100+1);
 }
+
+function changeStyling ()
+{}
 
 // get random choice
 let randomchoice = generateNumber();
@@ -17,7 +20,7 @@ document.getElementById("submit1").addEventListener('click', function(){
     const uGuess = document.getElementById('guess').value;
     if (Number(uGuess) == randomchoice){
         document.body.style.backgroundColor = 'green';
-        document.getElementById('secret').innerHTML = `${uGuess}`;
+        document.getElementById('secret').innerText = `${uGuess}`;
         document.getElementById('guess').style.display = 'none';
         document.getElementById('submit1').style.display = 'none';
         document.getElementById('reset1').style.display = 'none';
@@ -29,22 +32,23 @@ document.getElementById("submit1").addEventListener('click', function(){
         document.getElementById('phrase').style.display = 'none';
         document.getElementById('toprow1').style.marginTop = '-30px'
         document.getElementById('toprow1').style.justifyContent = 'left'
-        document.getElementById('crs').innerHTML = document.getElementById('current').innerHTML;
-        if (document.getElementById('high').innerHTML == 0) {
-        document.getElementById('hi').innerHTML = document.getElementById('current').innerHTML
+        document.getElementById('crs').innerText = document.getElementById('current').innerText;
+        if (document.getElementById('high').innerText == 0) {
+        document.getElementById('hi').innerText = document.getElementById('current').innerText
         }
-        else if (document.getElementById('hi').innerHTML < score) {
-            document.getElementById('hi').innerHTML = `${score}`
+        else if (document.getElementById('hi').innerText < score) {
+            document.getElementById('hi').innerText = `${score}`
         }
-        if (Number(document.getElementById('current').innerHTML) > Number(document.getElementById('high').innerHTML)){
-            document.getElementById('high').innerHTML = `${score}`;
+        if (Number(document.getElementById('current').innerText) > Number(document.getElementById('high').innerText)){
+            document.getElementById('high').innerText = `${score}`;
         }
     }
     // if guess is < randomchoice OR (guess is > randomchoice AND guess <= 100)
-    else if (Number(uGuess) < randomchoice || (Number(uGuess) > randomchoice && (Number(uGuess) <= 100 && Number(uGuess) >= 0))){
-        document.getElementById('phrase').innerHTML = `Your guess is too low`;
+    else if (Number(uGuess) < randomchoice && Number(uGuess) >= 0){
+        document.getElementById('phrase').innerText = `Your guess is too low`;
         score--;
-        document.getElementById('current').innerHTML = score
+        console.log(score)
+        document.getElementById('current').innerText = score
         if (Number(document.getElementById('current').innerText) == 0){
             document.body.style.backgroundColor = 'red';
             document.getElementById('secret1').innerText = `${randomchoice}`;
@@ -61,9 +65,30 @@ document.getElementById("submit1").addEventListener('click', function(){
             document.getElementById('main').style.backgroundColor = 'pink';
         }
     }
-    else{
-        document.getElementById('phrase').innerHTML = 'Your guess is not within 1-100. Please try again';
+    else if (Number(uGuess) > randomchoice && Number(uGuess) <= 100){
+        document.getElementById('phrase').innerText = `Your guess is too high`;
+        score--;
+        console.log(score)
+        document.getElementById('current').innerText = score
+        if (Number(document.getElementById('current').innerText) == 0){
+            document.body.style.backgroundColor = 'red';
+            document.getElementById('secret1').innerText = `${randomchoice}`;
+            document.getElementById('guess').style.display = 'none';
+            document.getElementById('submit1').style.display = 'none';
+            document.getElementById('reset1').style.display = 'none';
+            document.getElementById('reset2').style.display = 'flex';
+            document.getElementById('picture').src='lose.png';
+            document.getElementById('picture').style.marginLeft = '20%';
+            document.getElementById('lose').style.display = 'flex';
+            document.getElementById('phrase').style.display = 'none';
+            document.getElementById('toprow1').style.marginTop = '-80px'
+            document.getElementById('toprow1').style.justifyContent = 'left'
+            document.getElementById('main').style.backgroundColor = 'pink';
+        }
     }
+    else {
+        document.getElementById('phrase').innerText = 'Your guess is not within 1-100. Please try again';
+    }   
     // append to guess list after every submit
     const node = document.createElement("li");
     const guess = document.createTextNode(uGuess);
@@ -78,21 +103,21 @@ document.getElementById("submit1").addEventListener('click', function(){
         alert('You chose the same number');
         score++;
     }
-}
-)
+    })
 // reset function
 function reset(){
     score = 10
     randomchoice = generateNumber();
     guesslist.length = 0
-    document.getElementById("guesslist").innerHTML = 'Guesses: '
+    document.getElementById("guesslist").innerText = 'Guesses: '
     console.log(randomchoice)
-    document.getElementById('current').innerHTML = score;
+    document.getElementById('current').innerText = score;
     document.body.style.backgroundColor = 'aquamarine';
     document.getElementById('main').style.backgroundColor = 'peachpuff';
     document.getElementById('win').style.display = 'none';
     document.getElementById('lose').style.display = 'none';
     document.getElementById('phrase').style.display = 'flex';
+    document.getElementById('phrase').innerText = 'Enter your guess here';
     document.getElementById('main').style.backgroundColor = "dodgerblue";
     document.getElementById('reset1').style.display = 'flex';
     document.getElementById('toprow1').style.marginTop = '-15px';
