@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <link rel="stylesheet" href="proj3css.css"></link>
+</head>
+<body>
+
+    <div class="modal" id="modal">
+        <div class="window">
+            <a class="close" onclick="hide()">x</a>
+            <p class="mdlmsg">You chose the same number</p>
+        </div>
+        
+    </div>
+
+
+    <div class="guesshistory" id="guesshist">
+        <ul id="guesslist">
+            Guesses:
+        </ul>
+    </div>
+    <div class="content" id="content">
+        <h1 class="title" id="title">Guess the number!</h1>
+        <h3 class="subtitle" id="title"> Guess a number between 1 and 100</h3>
+        <div class="main" id="main">
+            <div class="toprow" id="toprow1">
+                <div class="scoreboard">
+                    <p>Score is: <span id="current"></p>
+                    <p>High Score: <span id="high">0</span></p>
+                </div>
+
+                <br id="picture"  width="20%" height="40%">
+                <div class="reset" id="reset1">Reset</div>
+            </div>
+            <div class="form">
+                <!-- Win -->
+                <div id="win">
+                    <h2>Congratulations</h2>
+                    <p>Your guess was correct! <span id="secret"></span> is my secret number</p>
+                    <h2>Your Score: <span id="crs"></span></h2>
+                    <h5> Best: <span id="hi"></span></h5>
+                    <div class="reset1" id="reset2">Play again</div>
+                </div>
+                <!-- Lose -->
+                <div id="lose">
+                    <h2>Shame, you lost the game</h2>
+                    <p>Too bad, <span id="secret1"></span> is my secret number</p>
+                    <button class="reset2" id="reset3">Try again</button>
+                </div>
+                <!-- Textbody -->
+                <p style="justify-content:center" id="phrase">Enter your guess here</p>
+                <input type="text" id="guess" name="guess" placeholder="Enter Number">
+                <input type="submit" id="submit1" value="Guess">
+
+            </div>
+        </div>
+    </div>
+<script src="proj3script.js"></script>
+</body>
+</html>
