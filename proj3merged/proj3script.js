@@ -1,4 +1,4 @@
-let score = 10;
+let score = 1;
 const guesslist = [];
 
 // random number function
@@ -25,6 +25,8 @@ function changeStyling (status, uGuess){
             document.getElementById('main').style.backgroundRepeat = "no-repeat";
             document.getElementById('secret1').innerText = `${randomchoice}`;
             document.getElementById('guess').style.display = 'none';
+            document.getElementById('guesshist').style.backgroundColor = '#9c1f17';
+            document.getElementById('scoreboard').style.backgroundColor = '#9c1f17';
             document.getElementById('submit1').style.display = 'none';
             document.getElementById('reset1').style.display = 'none';
             document.getElementById('reset2').style.display = 'flex';
@@ -40,7 +42,6 @@ function changeStyling (status, uGuess){
     else {
         document.body.style.backgroundColor = '#273B37';
         document.getElementById('main').style.backgroundImage = "url('win_animation.gif')";
-        document.getElementById('main').style.backgroundSize = "left center";
         document.getElementById('main').style.backgroundColor = '#ff7e06';
         document.getElementById('secret').innerText = `${uGuess}`;
         document.getElementById('guess').style.display = 'none';
@@ -48,7 +49,10 @@ function changeStyling (status, uGuess){
         document.getElementById('reset1').style.display = 'none';
         document.getElementById('reset2').style.display = 'flex';
         document.getElementById('win').style.display = 'flex';
-        document.getElementById('guesshist').style.backgroundColor = 'beige';
+        document.getElementById('guesshist').style.backgroundColor = '#732c91';
+        document.getElementById('guesshist').style.color = '#51b077';
+        document.getElementById('scoreboard').style.backgroundColor = '#fe3300';
+        document.getElementById('scoreboard').style.color = 'white';
         document.getElementById('guesslist').style.color = 'black';
         document.getElementById('phrase').style.display = 'none';
         document.getElementById('toprow1').style.marginTop = '-30px'
@@ -124,11 +128,14 @@ function reset(){
     document.getElementById('toprow1').style.marginTop = '-18px';
     document.getElementById('toprow1').style.justifyContent = 'space-between';
     document.getElementById('reset1').style.backgroundColor = '#EE8651';
-    document.getElementById('reset1').style.color = 'darkmagenta';
+    document.getElementById('reset1').style.color = 'white';
     document.getElementById('reset1').innerHTML = 'Reset';
     document.getElementById('guess').style.display = 'flex';
+    document.getElementById('guesslist').style.color = 'white';
     document.getElementById('submit1').style.display = 'flex';
     document.getElementById('guess').value = '';
+    document.getElementById('guesshist').style.backgroundColor = '#9C5221';
+    document.getElementById('scoreboard').style.backgroundColor = '#0073bb'
 }
 
 function hide(){
